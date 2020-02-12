@@ -1,1 +1,12 @@
-New View
+<form action="/users" method="post" accept-charset="UTF-8" class="new-user">
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <label for="username" value="Username">Username</label>
+  <input type="text" name="user[username]" id="username">
+  <label for="email" value="Email">Email</label>
+  <input type="email" name="user[email]" id="email">
+  <label for="password" value="Password">Password</label>
+  <input type="password" name="user[password]" id="password" autocomplete="off">
+  <input type="submit">
+</form>
+
+<%= params %>
