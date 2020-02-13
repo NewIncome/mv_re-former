@@ -2,29 +2,60 @@
 
 > ON this project we learned the differences between the form_tag, the form_for and the basic html form.
 
-![image](https://i.imgur.com/fZZH98F.png)
+![image](https://i.imgur.com/duYollu.png)
 
 ## Models
 
-- User:
-  - Has and unique _username_, unique _email_ and a _password_ created by a password and a confirmation (thanks to the **bcrypt** gem)
+- Basic html
+  - It's the most basic (as the name suggest it), and it relies on only html to be created, so you need to add a encryption, so that rails acan read it.
 
-  - Is able to post comments
-  - Is able to create posts
-- Post
-  - Has a title
-  - Has content
-  - Has many comments
-- Comment
-  - Belongs to a user, and also to a Post, where it was... well posted.
+  ```
+    <form action="/users" method="post" accept-charset="UTF-8" class="new-user">
+      <inp ut type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <label for="username" value="Username">Username</label>
+      <input type="text" name="user[username]" id="username">
+      <label for="email" value="Email">Email</label>
+      <input type="email" name="user[email]" id="email">
+      <label for="password" value="Password">Password</label>
+      <input type="password" name="user[password]" id="password" autocomplete="off">
+      <input type="submit">
+    </form>
+  ```
+- form_tag
+  - It's the first rails way, it authomaticly adds the auth input but otherwise it's still pretty much like making a pure html form
+  ```
+    <%= form_tag "/users", class:"new-user" do %>
+      <%= label_tag :username, "Username" %>
+      <%= text_field_tag :username, nil, placeholder:"Enter your desired Username" %>
+      <%= label_tag :email, "Email" %>
+      <%= text_field_tag :email, nil, placeholder:"Enter a valid Email" %>
+      <%= label_tag :password, "Password" %>
+      <%= password_field_tag :password, nil %>
+      <%= submit_tag :submit %>
+    <% end %>
+  ```
+- form_for
+  - It's the most railsy way to do forms (in rails 5), it automatically sends the authentication, and also nest the field inputs into a hash before sending it.
+  ```
+    <%= form_for @user, html: {class: 'new-user'} do |usr| %>
+      <%= render 'shared/errors' %>
+      <%= usr.label :username, 'Username' %>
+      <%= usr.text_field :username, placeholder: 'Your username', value: value_helper(@user.username) %>
+      <%= usr.label :email, 'Email'%>
+      <%= usr.text_field :email, placeholder: 'Your@email.com', value: value_helper(@user.email) %>
+      <%= usr.label :password, 'Password' %>
+      <%= usr.password_field :password, value: value_helper(@user.password) %>
+      <%= usr.submit :submit, value: action_name + ' user' %>
+    <% end %>
+  ```
 
 ### How to use
 
-You can try the models yoursel by:
+You can try the different forms by yoursel:
 
 - Cloning the repo:
   ```
-  $ git clone git@github.com:YoseptF/micro-reddit.git
+  $ git clone git@github.com:NewIncome/mv_re-former.git
   ```
 - Checkout to the correct branch (this depends on what are you testing, exp: develop, feature/_your desired feature_, etc.):
   ```
@@ -38,16 +69,16 @@ You can try the models yoursel by:
   ```
   $ yarn install --check-files
   ```
-- Run your tests on the console
+- Open a rails server
   ```
-  $ rails c
+  $ rails s
   ```
+- Open your browser in the _users/new_ or _users/:id/edit_
 ## Built With
 
 - Ruby
 - Ruby on Rails
 
-- bcrypt (gem)
 - A bunch on gems used inside rails itself
 
 ## Authors
