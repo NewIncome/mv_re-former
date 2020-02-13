@@ -10,7 +10,8 @@ class UsersController < ApplicationController
     if @user.save
       render json: { params: params, status: 'saved' }, status: :ok
     else
-      render json: @user.errors.full_messages
+      render 'new'
+      # render json: @user.errors.full_messages
     end
   end
 
@@ -23,7 +24,8 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       render json: @user
     else
-      render html: 'fail'
+      # render html: 'fail'
+      render 'edit'
     end
   end
 

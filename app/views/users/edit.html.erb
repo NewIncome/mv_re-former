@@ -1,4 +1,6 @@
-<%= form_for @user, html: {class: 'new-user'} do |usr| %>
+<%= render 'shared/form' %>
+
+<!-- <%= form_for @user, html: {class: 'new-user'} do |usr| %>
   <%= usr.label :username, 'Username' %>
   <%= usr.text_field :username, value: @user.username %>
   <%= usr.label :email, 'Email'%>
@@ -6,4 +8,4 @@
   <%= usr.label :password, 'Password' %>
   <%= usr.password_field :password, value: @user.password %>
   <%= usr.submit :submit, value: 'Edit' %>
-<% end %>
+<% end %> -->
