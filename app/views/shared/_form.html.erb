@@ -1,0 +1,10 @@
+<%= form_for @user, url: user_path , html: {class: 'new-user'} do |usr| %>
+  <%= render 'shared/errors' %>
+  <%= usr.label :username, 'Username' %>
+  <%= usr.text_field :username, placeholder: 'Your username', value: value_helper(@user.username) %>
+  <%= usr.label :email, 'Email'%>
+  <%= usr.text_field :email, placeholder: 'Your@email.com', value: value_helper(@user.email) %>
+  <%= usr.label :password, 'Password' %>
+  <%= usr.password_field :password, value: value_helper(@user.password) %>
+  <%= usr.submit :submit, value: action_name + ' user' %>
+<% end %>

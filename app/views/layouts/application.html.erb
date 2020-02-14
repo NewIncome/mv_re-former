@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ReFormer</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <% unless flash.empty? %>
+      <% flash_values(flash) %>
+      <div class="flash <%= @flash[:class] %>%"><%= @flash[:content] %></div>
+    <% end %>
+    <%= yield %>
+    <%= debug(params) if Rails.env.development? %>
+  </body>
+</html>
