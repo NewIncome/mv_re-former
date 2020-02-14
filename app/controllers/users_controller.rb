@@ -5,13 +5,12 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    # @user = User.new(username:params[:username], email:params[:email], password:params[:password])
 
     if @user.save
-      render json: { params: params, status: 'saved' }, status: :ok
+      flash[:notice] = 'new user was created'
+      redirect_to new_user_path
     else
       render 'new'
-      # render json: @user.errors.full_messages
     end
   end
 
@@ -22,9 +21,9 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      render json: @user
+      flash[:notice] = 'User was updated'
+      redirect_to edit_user_path
     else
-      # render html: 'fail'
       render 'edit'
     end
   end

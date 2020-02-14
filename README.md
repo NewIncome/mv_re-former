@@ -1,13 +1,13 @@
 # _Micro-Reddit_
 
-> ON this project we learned the differences between the form_tag, the form_for and the basic html form.
+> ON this project we learned the differences between the form_tag, the form_for and the basic Html form.
 
 ![image](https://i.imgur.com/duYollu.png)
 
 ## Models
 
-- Basic html
-  - It's the most basic (as the name suggest it), and it relies on only html to be created, so you need to add a encryption, so that rails acan read it.
+- Basic Html
+  - It's the most basic (as the name suggests it), and it relies only on Html to be created, so you need to add encryption, so that rails can read it.
 
   ```
     <form action="/users" method="post" accept-charset="UTF-8" class="new-user">
@@ -22,7 +22,7 @@
     </form>
   ```
 - form_tag
-  - It's the first rails way, it authomaticly adds the auth input but otherwise it's still pretty much like making a pure html form
+  - It's the first rails way, it automatically adds the auth input but otherwise, it's still pretty much like making a pure html form
   ```
     <%= form_tag "/users", class:"new-user" do %>
       <%= label_tag :username, "Username" %>

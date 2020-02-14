@@ -78,3 +78,20 @@ ul {
   color: red;
   margin-bottom: 15px;
 }
+
+/* Flashes */
+
+.flash {
+  position: absolute;
+  top: 0;
+  left: 25%;
+  background: rgba(55, 64, 70, 0.726);
+  border: 2px solid rgba(216, 94, 12, 0.404);
+  border-radius: 4px;
+  text-align: center;
+  width: 50%;
+  margin: 5px 0;
+  color: white;
+  padding: 13px;
+  transition: 1.2 ease-in-out;
+}

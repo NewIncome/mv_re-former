@@ -1,4 +1,4 @@
-<!-- <form action="/users" method="post" accept-charset="UTF-8" class="new-user">
+<!-- <form action= <%= users_path %> method="post" accept-charset="UTF-8" class="new-user">
 <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <label for="username" value="Username">Username</label>
   <input type="text" name="user[username]" id="username">
@@ -11,7 +11,7 @@
 
 <%= params %> -->
 <!--
-<%= form_tag "/users", class:"new-user" do %>
+<%= form_tag user_path, class:"new-user" do %>
   <%= label_tag :username, "Username" %>
   <%= text_field_tag :username, nil, placeholder:"Enter your desired Username" %>
   <%= label_tag :email, "Email" %>
